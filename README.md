@@ -2,6 +2,24 @@
 
 Simple Python script to download Salesforce Apex Logs. The script will download all log files created TODAY larger than a set size in bytes (LOG_LENGTH).
 
+## Install
+Windows
+```
+$> python -m venv .venv
+$> .venv\Scripts\activate
+$> python -m pip install flake8 pytest pip-tools
+$> pip-compile requirements.in -o requirements.txt
+$> python -m pip install -r requirements.txt
+```
+Linux
+```
+$> python3 -m venv .venv
+$> source .venv\Scripts\activate
+$> python -m pip install flake8 pytest pip-tools
+$> pip-compile requirements.in -o requirements.txt
+$> python -m pip install -r requirements.txt
+```
+
 ## Setup
 
 Create a .env file

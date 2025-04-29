@@ -127,7 +127,7 @@ def main():
         apex_log_id = df.loc[i, "Id"]
         apex_log = download_apex_log(sf, apex_log_id)
         if apex_log:
-            file_path = os.path.join(LOGS_DIRECTORY, f"apex_log-{apex_log_id}.txt")
+            file_path = os.path.join(LOGS_DIRECTORY, f"apex_log-{apex_log_id}.log")
             with open(file_path, "wb") as f:
                 f.write(apex_log)
             logging.info(f"Downloaded Apex Log: {file_path}")

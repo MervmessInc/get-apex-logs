@@ -1,4 +1,4 @@
-from getApexLog import salesforce_login, getApexLogs, downloadApexLog
+from getApexLog import salesforce_login, get_apex_logs, download_apex_log
 from unittest.mock import patch, MagicMock
 
 
@@ -23,7 +23,7 @@ def test_salesforce_login(mock_salesforce):
 
 
 @patch("getApexLog.format_soql")
-def test_getApexLogs(mock_format_soql):
+def test_get_apex_logs(mock_format_soql):
 
     # Mock SOQL formatting
     mock_format_soql.return_value = """
@@ -73,7 +73,7 @@ def test_getApexLogs(mock_format_soql):
     sf.query.return_value = {"records": [row0, row1, row2]}
 
     # Call the function
-    df = getApexLogs(sf, 500)
+    df = get_apex_logs(sf, 500)
 
     # Assertions
     assert not df.empty
@@ -89,7 +89,7 @@ def test_getApexLogs(mock_format_soql):
 
 
 @patch("getApexLog.requests.get")
-def test_downloadApexLog(mock_get):
+def test_download_apex_log(mock_get):
     # Mock request response
     mock_response = MagicMock()
     mock_response.content = b"Test log content"
@@ -99,7 +99,7 @@ def test_downloadApexLog(mock_get):
     sf = MagicMock()
     sf.sf_instance = "test_instance"
     sf.headers = {"Authorization": "Bearer test_token"}
-    log_content = downloadApexLog(sf, "test_log_id")
+    log_content = download_apex_log(sf, "test_log_id")
     assert log_content == b"Test log content"
     mock_get.assert_called_once_with(
         "https://test_instance/apexdebug/traceDownload.apexp?id=test_log_id",

@@ -59,7 +59,7 @@ typing-extensions==4.13.2
     # via simple-salesforce
 tzdata==2025.2
     # via pandas
-urllib3==2.4.0
+urllib3==2.5.0
     # via requests
 zeep==4.3.1
     # via simple-salesforce
